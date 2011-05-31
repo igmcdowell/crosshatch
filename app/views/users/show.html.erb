@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Twitterhandle:</b>
+  <%= @user.twitterhandle %>
+</p>
+
+<p>
+  <b>Twitterid:</b>
+  <%= @user.twitterid %>
+</p>
+
+<p>
+  <b>Linkats:</b>
+  <%= @user.linkats %>
+</p>
+
+<p>
+  <b>Linkhashes:</b>
+  <%= @user.linkhashes %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

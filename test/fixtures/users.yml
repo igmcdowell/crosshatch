@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  twitterhandle: MyString
+  twitterid: 1
+  linkats: false
+  linkhashes: false
+
+two:
+  twitterhandle: MyString
+  twitterid: 1
+  linkats: false
+  linkhashes: false
