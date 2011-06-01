@@ -9,19 +9,20 @@ class AuthController < ApplicationController
       http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = true
       r = Net::HTTP::Get.new(uri.request_uri)
-      response = http.request(r)
+      @response = http.request(r)
       begin
-        data = JSON.parse(response.body)
-      rescue ParserError
+        data = JSON.parse(@response.body)
+      rescue JSON::ParserError
         exp = /token=(.*)/
-        exp.match(response.body)
+        exp.match(@response.body)
         if $1
           @token = $1
         else
           @error = "Non-json response, but not a token"
+        end
       end
       if @token
-        @twitter_id = data['twitter_id']
+        #@twitter_id = data['twitter_id']
         render :success
       else
         if !@error
