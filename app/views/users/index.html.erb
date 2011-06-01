@@ -1,12 +1,14 @@
 <h1>Listing users</h1>
-
+Notice:<%= @notice =%>
+Token:<%= @token =%>
 <table>
   <tr>
     <th>Twitterhandle</th>
     <th>Twitterid</th>
     <th>Linkats</th>
     <th>Linkhashes</th>
-    <th></th>
+    <th>FB Token</th>
+		<th></th>
     <th></th>
     <th></th>
   </tr>
@@ -17,6 +19,7 @@
     <td><%= user.twitterid %></td>
     <td><%= user.linkats %></td>
     <td><%= user.linkhashes %></td>
+		<td><%= user.fb_token %></td>
     <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
     <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>

@@ -24,14 +24,17 @@ class UsersController < ApplicationController
   # GET /users/new
   # GET /users/new.xml
   def new
-    #https://www.facebook.com/dialog/oauth?
-    #    client_id=YOUR_APP_ID&redirect_uri=YOUR_URL&scope=publish_stream
-    @user = User.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @user }
+    if params[:access_token]
+      @user = User.new
+    else
+      authpath = root_url + 'auth'
+      redirect_to %Q|https://www.facebook.com/dialog/oauth?client_id=#{ENV['FB_ID']}&redirect_uri=#{authpath}&scope=publish_stream,offline_access|
     end
+    
+    #respond_to do |format|
+    #  format.html # new.html.erb
+    #  format.xml  { render :xml => @user }
+    #end
   end
 
   # GET /users/1/edit
@@ -43,7 +46,8 @@ class UsersController < ApplicationController
   # POST /users.xml
   def create
     @user = User.new(params[:user])
-
+    @token = params[:token]
+    render :index
     respond_to do |format|
       if @user.save
         format.html { redirect_to(@user, :notice => 'User was successfully created.') }

@@ -1,7 +1,8 @@
 Crosshatch::Application.routes.draw do
   resources :users
-
   resources :posts
+  root :to => 'user#create'
+  match 'auth' => 'auth#validate'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
