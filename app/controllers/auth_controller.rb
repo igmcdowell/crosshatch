@@ -1,6 +1,37 @@
 class AuthController < ApplicationController
   require 'net/http'
   require 'net/https'
+  require 'oauth'
+  
+  def starttwitter
+    oauth = OAuth::Consumer.new(ENV['TW_KEY'], ENV['TW_SECRET'],
+                                 { :site => "https://twitter.com" })
+    url = root_url + "auth/twitter"
+    request_token = oauth.get_request_token(:oauth_callback => url)
+    session[:twtoken] = request_token.token
+    session[:twsecret] = request_token.secret
+    redirect_to request_token.authorize_url
+  end
+  
+  def finishtwitter
+    oauth = OAuth::Consumer.new(ENV['TW_KEY'], ENV['TW_SECRET'],
+                                 { :site => "http://twitter.com" })
+    request_token = OAuth::RequestToken.new(oauth, session[:request_token],
+                                            session[:request_token_secret])
+    @access_token = request_token.get_access_token(
+                      :auth_verifier => params[:oauth_verifier])
+
+
+
+    # Get account details from Twitter
+    @response = oauth.request(:get, '/account/verify_credentials.json',
+                             @access_token, { :scheme => :query_string })
+
+    # Then do stuff with the details
+    @user_info = JSON.parse(response.body)
+    render :success
+  end
+  
   # GET /auth
   def validate
     if params[:code]

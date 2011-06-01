@@ -2,8 +2,11 @@ Crosshatch::Application.routes.draw do
   resources :users
   resources :posts
   root :to => 'user#create'
+  match 'auth/starttwitter' => 'auth#starttwitter' 
+  match 'auth/twitter' => 'auth#finishtwitter'
   match 'auth' => 'auth#validate'
   match 'canvas' => 'canvas#signup'
+  match 'setup' => 'setup#show'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
