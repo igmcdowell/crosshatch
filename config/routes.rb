@@ -3,6 +3,7 @@ Crosshatch::Application.routes.draw do
   resources :posts
   root :to => 'user#create'
   match 'auth' => 'auth#validate'
+  match 'canvas' => 'canvas#signup'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
