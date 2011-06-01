@@ -19,7 +19,7 @@ class AuthController < ApplicationController
         @error = data['error']['type']
         @error_description = data['error']['message']
         @token = "error, no token"
-        render :success #:error
+        render :error
       end
     else
       if params[:error] 
