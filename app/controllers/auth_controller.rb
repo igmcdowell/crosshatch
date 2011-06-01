@@ -4,7 +4,7 @@ class AuthController < ApplicationController
   # GET /auth
   def validate
     if params[:code]
-      path = %Q|https://graph.facebook.com/oauth/access_token?client_id=#{ENV['FB_ID']}&redirect_uri=#{root_url+'/auth'}&client_secret=#{ENV['FB_SECRET']}&code=#{params[:code]}|
+      path = %Q|https://graph.facebook.com/oauth/access_token?client_id=#{ENV['FB_ID']}&redirect_uri=#{root_url+'/authing'}&client_secret=#{ENV['FB_SECRET']}&code=#{params[:code]}|
       uri = URI.parse(path)
       http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = true
