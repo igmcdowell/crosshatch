@@ -16,19 +16,16 @@ class AuthController < ApplicationController
   def finishtwitter
     oauth = OAuth::Consumer.new(ENV['TW_KEY'], ENV['TW_SECRET'],
                                  { :site => "http://twitter.com" })
-    request_token = OAuth::RequestToken.new(oauth, session[:request_token],
-                                            session[:request_token_secret])
-    @access_token = request_token.get_access_token(
+    request_token = OAuth::RequestToken.new(oauth, session[:twtoken],
+                                            session[:twsecret])
+    access_token = request_token.get_access_token(
                       :auth_verifier => params[:oauth_verifier])
 
 
-
+    @token = access_token.token            
     # Get account details from Twitter
-    @response = oauth.request(:get, '/account/verify_credentials.json',
-                             @access_token, { :scheme => :query_string })
-
-    # Then do stuff with the details
-    @user_info = JSON.parse(response.body)
+    #@response = oauth.request(:get, '/account/verify_credentials.json',
+                             access_token, { :scheme => :query_string })
     render :success
   end
   
