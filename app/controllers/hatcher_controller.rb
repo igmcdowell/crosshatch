@@ -9,6 +9,10 @@ class HatcherController < ApplicationController
     end
     client = Twitter::Client.new
     timeline = client.user_timeline({:since_id => user['last_post'], :include_entities => true})
+    if timeline[0]
+      user['last_post'] = timeline[0]['id']
+      user.save
+    end
     timeline.each do |tweet|
       if !tweet['to_user_id'] 
         text = tweet['text'] 
@@ -22,7 +26,15 @@ class HatcherController < ApplicationController
           text.gsub!('#'+tag['text'],'#'+tag['text']+' (http://t3l.us/h/'+tag['text']+')')
         end
         puts text
+        
+        
+        path = "https://graph.facebook.com/me/feed"
+        uri = URI.parse(path+'?access_token='+CGI.escape(token))
+        http = Net::HTTP.new(uri.host, uri.port)
+        http.use_ssl = true
+        @response = http.request_post(uri.path+'?'+uri.query, 'message='+text)
       end
     end
+    render :index
   end
 end

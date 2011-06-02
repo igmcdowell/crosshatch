@@ -7,6 +7,7 @@ Crosshatch::Application.routes.draw do
   match 'auth' => 'auth#validate'
   match 'canvas' => 'canvas#signup'
   match 'setup' => 'setup#show'
+  match 'hatch' => 'hatcher#hatch'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

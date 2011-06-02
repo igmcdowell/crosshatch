@@ -9,6 +9,7 @@ class AddNeededFieldsToUsers < ActiveRecord::Migration
       t.string :tw_img
       t.string :fb_token
       t.boolean :fb_linked
+      t.integer :fb_id, :limit => 8
       t.integer :last_post, :limit => 8
     end
   end
