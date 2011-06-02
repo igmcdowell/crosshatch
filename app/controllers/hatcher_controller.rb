@@ -22,4 +22,5 @@ class HatcherController < ApplicationController
       end
       puts text
     end
+  end
 end
