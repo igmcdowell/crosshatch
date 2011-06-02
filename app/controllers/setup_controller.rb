@@ -7,6 +7,9 @@ class SetupController < ApplicationController
       if user[:tw_linked]
         @twitter_linked = true
       end
+      if user[:fb_linked]
+        @facebook_linked = true
+      end
       render :index
     else
       redirect_to root_url

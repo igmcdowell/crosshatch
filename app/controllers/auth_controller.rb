@@ -61,7 +61,7 @@ class AuthController < ApplicationController
       user.save
       session[:twid] = twitter_id
     end
-    render :success
+    redirect_to 'setup'
   end
   
   # GET /auth
@@ -94,7 +94,7 @@ class AuthController < ApplicationController
           user.save
         end
         #store token in user database here.
-        render :success
+        redirect_to 'setup'
       else
         if !@error
           @error = data['error']['type']
