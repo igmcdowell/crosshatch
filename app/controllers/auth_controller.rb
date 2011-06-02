@@ -53,7 +53,7 @@ class AuthController < ApplicationController
       #the user just logged in. We should check if they already exist in our database, and do appropriate updates.
       user = User.find_by_tw_id(twitter_id)
       unless user: #it's a brand new user that needs to be created.
-        user = User.new(:tw_id => twitter_id, :tw_linked => false, :fb_linked => false, :last_update =>last_tweet_id)
+        user = User.new(:tw_id => twitter_id, :tw_linked => false, :fb_linked => false, :last_post =>last_tweet_id)
       end
       #These attributes can change, so they get updated/created for all users on login
       user[:tw_handle] = twitter_name
