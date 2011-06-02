@@ -10,6 +10,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def signin
+    if session[:twid]
+      redirect_to root_url + 'setup'
+    else
+      @twitter_login = root_url + 'auth/starttwitter'
+      render :signin
+    end
+  end
+  
   # GET /users/1
   # GET /users/1.xml
   def show
@@ -24,12 +33,6 @@ class UsersController < ApplicationController
   # GET /users/new
   # GET /users/new.xml
   def new
-    if params[:access_token]
-      @user = User.new
-    else
-      authpath = root_url + 'auth'
-      redirect_to %Q|https://www.facebook.com/dialog/oauth?client_id=#{ENV['FB_ID']}&redirect_uri=#{authpath}&scope=publish_stream,offline_access|
-    end
     
     #respond_to do |format|
     #  format.html # new.html.erb
@@ -63,7 +66,6 @@ class UsersController < ApplicationController
   # PUT /users/1.xml
   def update
     @user = User.find(params[:id])
-
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to(@user, :notice => 'User was successfully updated.') }

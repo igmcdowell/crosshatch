@@ -10,23 +10,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110601001942) do
-
-  create_table "posts", :force => true do |t|
-    t.integer  "twitterid"
-    t.string   "content"
-    t.boolean  "handled"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(:version => 20110601235229) do
 
   create_table "users", :force => true do |t|
-    t.string   "twitterhandle"
-    t.integer  "twitterid"
-    t.boolean  "linkats"
-    t.boolean  "linkhashes"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.boolean "tw_linked"
+    t.integer "tw_id"
+    t.string  "tw_handle"
+    t.string  "tw_secret"
+    t.string  "tw_token"
+    t.string  "tw_img"
+    t.string  "fb_token"
+    t.boolean "fb_linked"
+    t.integer "last_post"
   end
 
 end

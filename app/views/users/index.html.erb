@@ -3,11 +3,15 @@ Notice:<%= @notice =%>
 Token:<%= @token =%>
 <table>
   <tr>
-    <th>Twitterhandle</th>
-    <th>Twitterid</th>
-    <th>Linkats</th>
-    <th>Linkhashes</th>
-    <th>FB Token</th>
+    <th>Twitter Handle</th>
+    <th>Twitter ID</th>
+		<th>Twitter IMage</th>
+    <th>Twitter Linked?</th>
+    <th>Twitter Secret</th>
+    <th>Twitter Token</th>
+		<th>Facebook Linked?</th>
+		<th>Facebook Token</th>
+		<th>Last Post</th>
 		<th></th>
     <th></th>
     <th></th>
@@ -15,11 +19,15 @@ Token:<%= @token =%>
 
 <% @users.each do |user| %>
   <tr>
-    <td><%= user.twitterhandle %></td>
-    <td><%= user.twitterid %></td>
-    <td><%= user.linkats %></td>
-    <td><%= user.linkhashes %></td>
+    <td><%= user.tw_handle %></td>
+    <td><%= user.tw_id %></td>
+    <td><%= user.tw_img %></td>
+    <td><%= user.tw_linked %></td>
+		<td><%= user.tw_secret %></td>
+		<td><%= user.tw_token %></td>
+		<td><%= user.fb_linked %></td>
 		<td><%= user.fb_token %></td>
+		<td><%= user.last_post %></td>
     <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
     <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
