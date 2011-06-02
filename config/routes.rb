@@ -1,11 +1,9 @@
 Crosshatch::Application.routes.draw do
-  resources :users
-  resources :posts
   root :to => 'users#signin'
   match 'auth/starttwitter' => 'auth#starttwitter' 
   match 'auth/twitter' => 'auth#finishtwitter'
   match 'auth' => 'auth#validate'
-  match 'canvas' => 'canvas#signup'
+  match 'canvas' => 'users#signin'
   match 'setup' => 'setup#show'
   match 'hatch' => 'hatcher#hatch'
 
