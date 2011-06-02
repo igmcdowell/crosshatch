@@ -40,7 +40,7 @@ class AuthController < ApplicationController
     twitter_name = @data['screen_name']
 
     if session[:twid]
-      #if we get here and we already have a session ID, then this must be the auth that's granting us permission, and we want to store the perms.
+      #if we get here and we already have a session twitter ID, then this must be the auth that's granting us permission, and we want to store the perms.
       user = User.find_by_tw_id(session[:twid])
       if token
         user[:tw_linked] = true
@@ -50,7 +50,7 @@ class AuthController < ApplicationController
       end
     else
       #the user just logged in. We should check if they already exist in our database, and do appropriate updates.
-      user = User.find_by_tw_id(session[:twid])
+      user = User.find_by_tw_id(twitter_id)
       unless user:
         user = User.new(:tw_id => twitter_id, :tw_linked => false, :fb_linked => false)
       end
