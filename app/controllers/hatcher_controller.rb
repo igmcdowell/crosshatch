@@ -1,5 +1,5 @@
 class HatcherController < ApplicationController
-  user = Users.find_by_tw_id('182253036') #hardcoding for initial testing.
+  user = User.find_by_tw_id('182253036') #hardcoding for initial testing.
   Twitter.configure do |config|
     config.consumer_key = ENV['TW_KEY']
     config.consumer_secret = ENV['TW_SECRET']
