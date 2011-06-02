@@ -1,6 +1,5 @@
 class AddNeededFieldsToUsers < ActiveRecord::Migration
   def self.up  
-    drop_table :users
     create_table :users do |t|
       t.boolean :tw_linked
       t.integer :tw_id, :unique => true
