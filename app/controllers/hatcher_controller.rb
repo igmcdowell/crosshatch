@@ -16,6 +16,7 @@ class HatcherController < ApplicationController
         user.save
       end
       timeline.each do |tweet|
+        skip = false
         if !tweet['to_user_id'] 
           text = tweet['text'] 
           entities = tweet['entities']
@@ -27,20 +28,17 @@ class HatcherController < ApplicationController
               skip = true
             end
           end
-          if skip
-            skip = false
-            next
+          if !skip
+            hashtags.each do |tag|
+              text.gsub!('#'+tag['text'],'#'+tag['text']+' (http://t3l.us/h/'+tag['text']+')')
+            end
+            path = "https://graph.facebook.com/me/feed"
+            uri = URI.parse(path+'?access_token='+CGI.escape(fbtoken))
+            http = Net::HTTP.new(uri.host, uri.port)
+            http.use_ssl = true
+            @response = http.request_post(uri.path+'?'+uri.query, 'message='+text)
+            @body = response.body
           end
-          hashtags.each do |tag|
-            text.gsub!('#'+tag['text'],'#'+tag['text']+' (http://t3l.us/h/'+tag['text']+')')
-          end
-        
-          path = "https://graph.facebook.com/me/feed"
-          uri = URI.parse(path+'?access_token='+CGI.escape(fbtoken))
-          http = Net::HTTP.new(uri.host, uri.port)
-          http.use_ssl = true
-          @response = http.request_post(uri.path+'?'+uri.query, 'message='+text)
-          @body = response.body
         end
       end
     end
