@@ -23,6 +23,13 @@ class HatcherController < ApplicationController
           mentions = entities['user_mentions']
           mentions.each do |mention| #I include the leading @ to guard against really bad double encoding
             text.gsub!('@'+mention['screen_name'],'@'+mention['screen_name']+' (http://t3l.us/'+mention['screen_name']+')')
+            if mention['indices'][0] == 0 
+              skip = true
+            end
+          end
+          if skip
+            skip = false
+            next
           end
           hashtags.each do |tag|
             text.gsub!('#'+tag['text'],'#'+tag['text']+' (http://t3l.us/h/'+tag['text']+')')
