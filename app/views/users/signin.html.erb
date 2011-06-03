@@ -1,59 +1,63 @@
-<h1>Welcome to Crosshatch</h1>
-<div>
-<p>Log in with your Twitter credentials to get going!</p>
-<a href="<%= @twitter_login %>"><img src ="images/sign_in_tw.png" /></a>
-</div>
+<div class="container">	
+	<div class="sixteen columns">
+		<h1 class="remove-bottom" style="margin-top: 40px">Welcome to CrossHatch</h1>
+		<hr />
+	</div>
+	<div class="four columns">
+		<h2>Get Started!</h2>	
+		<p><a href="<%= @twitter_login %>"><img src ="images/sign_in_tw.png" /></a></p>
+		<p>Setting up is easy: <ol class="square"><li>Click the sign in button.</li> <li>Link your Twitter and Facebook account</li> <li>You're done!</li> <li>Get yourself a cookie. Go on, you've earned it.</li></ol></p>
+		
+	</div>
+	<div class="twelve columns">
+		<h2>About Crosshatch</h2>	
+		<p>Crosshatch is a simple tool to "hatch" your Tweets for Facebook. Once you set it up, Crosshatch will automatically detect any new Tweets you make and post them to Facebook for you.</p> 
+		<p>	
+		Any time Crosshatch detects an @mention or #hashtag in a Tweet it's handling, it automatically adds an appropriate link back to Twitter. So if you have a tweet like:</p>
+		<img src="images/sample_tweet.png" />
+		<p>It will post to Facebook as:</p>
+		<img src="images/sample_fb_post.png" />
+	</div>
+	<hr />
+		<div class="sixteen columns">
+		<h2>Why Use Crosshatch?</h2>
+		<p>Your Facebook friends are sick of looking at your #hashtags and @mentions and not being able to do anything with them. Seriously, they told me.</p>	
+		</div>
 
-<div>
-<h2>What?</h2>
-<p>Crosshatch is a simple tool to "hatch" your Tweets for Facebook. Once you set it up, Crosshatch will automatically detect any new Tweets you make and post them to Facebook for you.</p> 
-<p>	
-Any time Crosshatch detects an @mention or #hashtag in a Tweet it's handling, it automatically adds an appropriate link back to Twitter. So if you have a tweet like:</p>
-<img src="images/sample_tweet.png" />
-<p>It will post to Facebook as:</p>
-<img src="images/sample_fb_post.png" />
-	
-</div>
+		<div class="sixteen columns">
+		<h2>How Does it Work?</h2>
+		<p>Simply sign in with twitter above, authorize Crosshatch to read your Twitter feed and post to your Facebook stream, and you're done. Crosshatch will automatically take your tweets, enhance them, and post them to Twitter. Once you're set up, you never need to act again.
+		</p>	
+		</div>
 
-<div>
-<h2>Why?</h2>
-<p>Your Facebook friends are sick of looking at your #hashtags and @mentions and not being able to do anything with them. Seriously, they told me.</p>	
-</div>
+		<div class="sixteen columns">
+		<h2>What's with the t3l.us in the links?</h2>	
+		<p>t3l.us is a URL shortener for crosshatch that helps make smaller links for @mentions and #hashtags. It doesn't collect any data or otherwise manipulate your links. The goal is to keep links short and easy to read</p>
+		<p>Compare http://twitter.com/search?%23fml (32 characters) with http://t3l.us/h/fml (19 characters)</p>
+		<p>It would be even better if Twitter provided this kind of redirect with their t.co URL shortening service. Tell your friends at Twitter.</p>
+		</div>
 
-<div>
-<h2>How?</h2>
-<p>Simply sign in with twitter above, authorize Crosshatch to read your Twitter feed and post to your Facebook stream, and you're done. Once you're set up, you never need to act again.
-</p>	
-</div>
+		<div class="sixteen columns">
+		<h2>Is that it?</h2>	
+		<p>Yeah, pretty much. There are a couple more features in development, stay tuned.</p>
+		</div>
 
-<div>
-<h2>What's with the t3l.us in the links?</h2>	
-<p>t3l.us is a URL shortener for crosshatch that helps make smaller links for @mentions and #hashtags. It doesn't collect any data or otherwise manipulate your links. The goal is to keep links short and easy to read</p>
-<p>Compare http://twitter.com/search?%23fml (32 characters) with http://t3l.us/h/fml (19 characters)</p>
-<p>It would be even better if Twitter provided this kind of redirect with their t.co URL shortening service. Tell your friends at Twitter.</p>
-</div>
+		<div class="sixteen columns">
+		<h2>Hey, I've got an idea: Why not just make the #hashtag a link in Facebook, instead of writing the URL at the end?</h2>	
+		<p>Because Facebook does not allow hyperlinks in posts. It will however automatically make any text that looks like http://example.com into a clickable link. But yeah, your idea is totally awesome.</p>
+		</div>
 
-<div>
-<h2>Is that it?</h2>	
-<p>Yeah, pretty much. There are a couple more features in development, stay tuned.</p>
-</div>
+		<div class="sixteen columns">
+		<h2>What about privacy?</h2>	
+		<p>You have none, you're using Facebook.</p> 
+		<p>But for the record we don't store your tweets on the Crosshatch servers, they're all passed through directly from Twitter to Facebook.</p>
+		<p>Crosshatch also uses the minimum permissions necessary to accomplish its mission. You may notice that it does not ask for permission to read your Facebook stream, and it does not ask for permission to post to your Twitter feed.</p>
+		<p>Finally, you can de-authorize crosshatch from your Facebook and Twitter account. At that point our service loses access to any non-public data.</p>
+		</div>
 
-<div>
-<h2>Hey, I've got an idea: Why not just make the #hashtag a link in Facebook, instead of writing the URL at the end?</h2>	
-<p>Because Facebook does not allow hyperlinks in posts. It will however automatically make any text that looks like http://example.com into a clickable link. But yeah, your idea is totally awesome.</p>
-</div>
+		<div class="sixteen columns">
+		<h2>Who's Responsible for This Mess?</h2>	
+		<p>That would be me, Ian McDowell. Please send bug reports, feature requests, and large cash donations to <a href="mailto:igmcdowell@gmail.com">igmcdowell@gmail.com</a></p>
+		</div>
 
-<div>
-<h2>What about privacy?</h2>	
-<p>You have none, you're using Facebook.</p> 
-<p>But for the record we don't store your tweets on the Crosshatch servers, they're all passed through directly from Twitter to Facebook.</p>
-<p>Crosshatch also uses the minimum permissions necessary to accomplish its mission. You may notice that it does not ask for permission to read your Facebook stream, and it does not ask for permission to post to your Twitter feed.</p>
-<p>Finally, you can de-authorize crosshatch from your Facebook and Twitter account. At that point our service loses access to any non-public data.</p>
-</div>
-
-<div>
-<h2>Who's Responsible for This Mess?</h2>	
-<p>That would be me, Ian McDowell. Please send bug reports, feature requests, and large cash donations to <a href="mailto:igmcdowell@gmail.com">igmcdowell@gmail.com</a></p>
-</div>
-
-
+</div><!-- container -->
