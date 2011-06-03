@@ -1,5 +1,10 @@
+<div class="container">	
+	<div class="sixteen columns">
 <h1>Status</h1>
+
 <hr />
+</div>
+<div class="eight columns">
 <h2>Twitter</h2>
 <% if !@twitter_linked %>
 <h3>Twitter Not Yet Linked</h3>
@@ -7,6 +12,8 @@
 <% else%>
 <h3>Twitter Linked Successfully</h3>
 <% end%>
+</div>
+<div class="eight columns">
 <h2>Facebook</h2>
 <% if !@facebook_linked %>
 	<h3>Facebook Not Yet Linked</h3>
@@ -14,3 +21,5 @@
 	<% else%>
 	<h3>Facebook Linked Succesfully</h3>
 	<% end%>
+	</div>
+	</div>
