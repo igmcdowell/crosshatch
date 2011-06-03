@@ -1,6 +1,6 @@
 class HatcherController < ApplicationController
   def hatch
-    users = User.all
+    users = User.where(:tw_linked => true).where(:fb_linked => true)
     users.each do |user|
       Twitter.configure do |config|
         config.consumer_key = ENV['TW_KEY']
