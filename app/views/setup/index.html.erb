@@ -22,4 +22,13 @@
 	<h3>Linked Succesfully</h3>
 	<% end%>
 	</div>
-	</div>
+	<hr />
+	<div class="sixteen columns">
+		<% if @facebook_linked and @twitter_linked%>
+		<p>You're all set. New posts in Twitter should be posted to Facebook within 30 seconds.</p>
+		<% else%>
+		<p>Crosshatch won't be able to post your Tweets to Facebook until you give it access to both.</p>
+		<% end%>
+		
+	</div>	
+</div>
