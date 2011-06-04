@@ -1,7 +1,4 @@
 <script> 
-function auth() {
-top.location.href='" . <%= @twitter_login %> . "'
-}
 </script>
 <div class="container">	
 	<div class="sixteen columns">
@@ -13,7 +10,7 @@ top.location.href='" . <%= @twitter_login %> . "'
 <h2>Twitter</h2>
 <% if !@twitter_linked %>
 <h3>Not Yet Linked</h3>
-<div><a href="#" class="button" onclick="auth">Give Crosshatch Access to Twitter</a></div>
+<div><a href="<%= @twitter_login %>" class="button" >Give Crosshatch Access to Twitter</a></div>
 <% else%>
 <h3>Linked Successfully</h3>
 <% end%>
