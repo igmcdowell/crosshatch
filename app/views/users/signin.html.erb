@@ -1,3 +1,8 @@
+<script> 
+function auth() {
+top.location.href="<%= @twitter_login %>";
+}
+</script>
 <div class="container">	
 	<div class="sixteen columns">
 		<h1 class="remove-bottom" style="margin-top: 40px">Welcome to CrossHatch</h1>
@@ -5,7 +10,7 @@
 	</div>
 	<div class="four columns">
 		<h2>Get Started!</h2>	
-		<p><a href="<%= @twitter_login %>"><img src ="images/sign_in_tw.png" /></a></p>
+		<p><a href="#" onclick="auth()"><img src ="images/sign_in_tw.png" /></a></p>
 		<p>Setting up is easy: <ol class="square"><li>Click the sign in button.</li> <li>Link your Twitter and Facebook account</li> <li>You're done!</li> <li>Get yourself a cookie. Go on, you've earned it.</li></ol></p>
 		
 	</div>

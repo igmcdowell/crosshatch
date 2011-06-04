@@ -1,3 +1,8 @@
+<script> 
+function auth() {
+top.location.href='" . <%= @twitter_login %> . "'
+}
+</script>
 <div class="container">	
 	<div class="sixteen columns">
 <h1>Setup Status</h1>
@@ -8,7 +13,7 @@
 <h2>Twitter</h2>
 <% if !@twitter_linked %>
 <h3>Not Yet Linked</h3>
-<div><a href="<%= @twitter_login %>" class="button">Give Crosshatch Access to Twitter</a></div>
+<div><a href="#" class="button" onclick="auth">Give Crosshatch Access to Twitter</a></div>
 <% else%>
 <h3>Linked Successfully</h3>
 <% end%>
@@ -17,7 +22,7 @@
 <h2>Facebook</h2>
 <% if !@facebook_linked %>
 	<h3>Not Yet Linked</h3>
-	<div><a href="<%= @fb_login %>" class="button">Give Crosshatch Access to Facebook</a></div>
+	<div><a href="<%= @fb_login %>" class="button" >Give Crosshatch Access to Facebook</a></div>
 	<% else%>
 	<h3>Linked Succesfully</h3>
 	<% end%>
