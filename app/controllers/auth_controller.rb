@@ -58,7 +58,6 @@ class AuthController < ApplicationController
       #These attributes can change, so they get updated/created for all users on login
       user[:tw_handle] = twitter_name
       user[:tw_img] = twitter_img
-      user[:tw_name] = twitter_name
       user.save
       session[:twid] = twitter_id
     end

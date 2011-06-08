@@ -10,11 +10,11 @@ class HatcherController < ApplicationController
       end
       client = Twitter::Client.new
       timeline = client.user_timeline({:since_id => user['last_post'], :include_entities => true})
-      fbtoken = user['fb_token']
       if timeline[0]
         user['last_post'] = timeline[0]['id']
         user.save
       end
+      fbtoken = user['fb_token']
       timeline.each do |tweet|
         skip = false
         if !tweet['to_user_id'] 
