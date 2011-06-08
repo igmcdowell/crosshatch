@@ -26,14 +26,11 @@ class User < ActiveRecord::Base
       config.oauth_token_secret = self[:tw_secret]
     end
     client = Twitter::Client.new
+    #returned implicitly
   end
   
   def getTwitterTimeline(client)
     timeline = client.user_timeline({:since_id => self[:last_post], :include_entities => true})
-    if timeline[0]
-      self[:last_post] = timeline[0]['id']
-      self.save
-    end
     return timeline
   end
   
@@ -68,6 +65,11 @@ class User < ActiveRecord::Base
   def hatchTweets
     client = self.createTwitterClient
     timeline = self.getTwitterTimeline(client)
+    if timeline[0]
+      #we log the last post before actually posting to FB. This trades accidentally not posting for accidentally double posting if errors happen.
+      self[:last_post] = timeline[0]['id'] 
+      self.save
+    end
     timeline.each do |tweet|
       self.postToFB(tweet)
     end
