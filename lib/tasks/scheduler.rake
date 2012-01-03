@@ -10,10 +10,6 @@ desc "Hatch tweets."
       end
       client = Twitter::Client.new
       timeline = client.user_timeline({:since_id => user['last_post'], :include_entities => true})
-      if timeline[0]
-        user['last_post'] = timeline[0]['id']
-        user.save
-      end
       fbtoken = user['fb_token']
       timeline.each do |tweet|
         skip = false
@@ -37,6 +33,12 @@ desc "Hatch tweets."
             http = Net::HTTP.new(uri.host, uri.port)
             http.use_ssl = true
             response = http.request_post(uri.path+'?'+uri.query, 'message='+text)
+            if response.code == 400
+              user.fb_linked=false
+            else
+              user['last_post'] = timeline[0]['id']
+            end
+            user.save
             @body = response.body
           end
         end
