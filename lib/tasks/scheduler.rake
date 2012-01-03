@@ -36,7 +36,7 @@ desc "Hatch tweets."
             uri = URI.parse(path+'?access_token='+CGI.escape(fbtoken))
             http = Net::HTTP.new(uri.host, uri.port)
             http.use_ssl = true
-            @response = http.request_post(uri.path+'?'+uri.query, 'message='+text)
+            response = http.request_post(uri.path+'?'+uri.query, 'message='+text)
             @body = response.body
           end
         end
